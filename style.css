@@ -1,0 +1,114 @@
+body{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#calculator {
+    display: grid;
+    grid-template-areas:
+    "disp disp disp disp"
+    "disp disp disp disp"
+    "ac plusminus percent divide"
+    "seven eight nine multiply"
+    "four five six subtract"
+    "one two three add"
+    "zero zero decimal equals";
+    width: 400px;
+    height: 500px;
+    background-color: black;
+    border: 5px solid pink;
+    border-radius: 5px;
+}
+.special-function {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #706f6f;
+
+}
+.operator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(255, 145, 81);
+}
+.num-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #1f1e1e;
+    vertical-align: middle;
+}
+[data-function="clear"]{
+    grid-area: ac;
+}
+[data-function="negate"]{
+    grid-area: plusminus;
+}
+[data-function="percent"]{
+    grid-area: percent;
+}
+[data-function="zero"]{
+    grid-area: zero;
+}
+[data-function="one"]{
+    grid-area: one;
+}
+[data-function="two"]{
+    grid-area: two;
+}
+[data-function="three"]{
+    grid-area: three;
+}
+[data-function="four"]{
+    grid-area: four;
+}
+[data-function="five"]{
+    grid-area: five;
+}
+[data-function="six"]{
+    grid-area: six;
+}
+[data-function="seven"]{
+    grid-area: seven;
+}
+[data-function="eight"]{
+    grid-area: eight;
+}
+[data-function="nine"]{
+    grid-area: nine;
+}
+[data-function="decimal"]{
+    grid-area: decimal;
+}
+[data-function="add"]{
+    grid-area: add;
+}
+[data-function="subtract"]{
+    grid-area: subtract;
+}
+[data-function="multiply"]{
+    grid-area: multiply;
+}
+[data-function="divide"]{
+    grid-area: divide;
+}
+[data-function="equals"]{
+    grid-area: equals;
+}
+[data-function="disp"]{
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: disp;
+    background-color: black;
+    color: white;
+    font-size: 48px;
+}
+
