@@ -3,6 +3,7 @@ body{
     height: 100vh;
     align-items: center;
     justify-content: center;
+    background-color: #1f2029;
 }
 
 #calculator {
@@ -18,31 +19,78 @@ body{
     width: 400px;
     height: 500px;
     background-color: black;
-    border: 5px solid pink;
+    border: 8px solid black;
     border-radius: 5px;
+    grid-gap: 1px;
 }
 .special-function {
     display: flex;
+    color: #0f0f0f;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background-color: #706f6f;
-
+    text-align: center; 
+    background-color: #a5a5a5;
+}
+.special-function:hover{
+    animation-name: fade-special;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+.special-function-pressed{
+    animation-name: fade-special;
+    animation-duration: 500ms;
+    animation-play-state: initial;
+}
+@keyframes fade-special{
+    100%{
+        background-color: #d9d9d9;
+    }
 }
 .operator {
     display: flex;
+    color: white;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: rgb(255, 145, 81);
+    background-color: #ff9e0a;
+}
+.operator:hover{
+    animation: fade-operator;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+.operator-pressed{
+    animation: fade-operator;
+    animation-duration: 500ms;
+}
+@keyframes fade-operator{
+    100%{
+        background-color: #ffc266;
+        Color: black;
+    }
 }
 .num-input {
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: #1f1e1e;
+    background-color: #333333;
     vertical-align: middle;
+}
+.num-input:hover{
+    animation: fade-num;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+.num-input-pressed{
+    animation: fade-num;
+    animation-duration: 300ms;
+}
+@keyframes fade-num{
+    100%{
+        background-color: #666666;
+    }
 }
 [data-function="clear"]{
     grid-area: ac;
@@ -103,12 +151,14 @@ body{
 }
 [data-function="disp"]{
     max-width: 400px;
+    max-height: 142px;
     display: flex;
     align-items: center;
     justify-content: center;
     grid-area: disp;
-    background-color: black;
+    background-color: #555555;
     color: white;
     font-size: 48px;
+    border-radius: 5px;
 }
 

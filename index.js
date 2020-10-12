@@ -20,13 +20,26 @@ const populate = (input) =>  {
     (display.textContent === '0') ?  display.textContent = input : display.textContent += input 
 }
 function setUpCalculator(){
-    console.log('i ran')
+
+    window.addEventListener('keydown', e => {
+        const input = document.querySelector(`[data-key="${e.key}"]`)
+        if(input.className == 'num-input'){
+        input.classList.add('num-input-pressed')
+        populate(input.textContent)
+        }
+    })
+
+    
     let numButtons = Array.from(document.querySelectorAll('.num-input'))
+    
     numButtons.forEach(button => {
         button.addEventListener('click', e => {
             populate(e.target.textContent)
         })
     })
 }
+
+
+
 setUpCalculator();
 
