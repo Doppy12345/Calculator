@@ -4,24 +4,28 @@ body{
     align-items: center;
     justify-content: center;
     background-color: #1f2029;
+    --calculator-width: 320px;
+    --calculator-height: 500px;
+    --calculator-button-fontsize: 24px;
 }
 
 #calculator {
     display: grid;
     grid-template-areas:
     "disp disp disp disp"
-    "disp disp disp disp"
     "ac plusminus percent divide"
     "seven eight nine multiply"
     "four five six subtract"
     "one two three add"
     "zero zero decimal equals";
-    width: 400px;
-    height: 500px;
+    width: var(--calculator-width);
+    height: var(--calculator-height);
     background-color: black;
-    border: 8px solid black;
+    border: 8px solid black; 
     border-radius: 5px;
     grid-gap: 1px;
+    box-shadow: 0 0px 10px 0 #555555;
+    cursor: pointer;
 }
 .special-function {
     display: flex;
@@ -30,22 +34,17 @@ body{
     justify-content: center;
     text-align: center; 
     background-color: #a5a5a5;
-}
+    font-size: var(--calculator-button-fontsize);
+    user-select: none;
+}   
 .special-function:hover{
-    animation-name: fade-special;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
+    background-color: #d9d9d9;
 }
-.special-function-pressed{
-    animation-name: fade-special;
-    animation-duration: 500ms;
-    animation-play-state: initial;
+.special-function-clicked, .special-function-pressed{
+    animation: click;
+    animation-duration: 200ms;
 }
-@keyframes fade-special{
-    100%{
-        background-color: #d9d9d9;
-    }
-}
+
 .operator {
     display: flex;
     color: white;
@@ -53,22 +52,27 @@ body{
     justify-content: center;
     text-align: center;
     background-color: #ff9e0a;
+    font-size: var(--calculator-button-fontsize);
+    user-select: none;
 }
 .operator:hover{
-    animation: fade-operator;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
+    background-color: #ffc266;
+    Color: black;
 }
-.operator-pressed{
-    animation: fade-operator;
-    animation-duration: 500ms;
+.operator-selected{
+    background-color: white;
+    color: #ff9e0a;
 }
-@keyframes fade-operator{
-    100%{
-        background-color: #ffc266;
-        Color: black;
-    }
+.operator-selected:hover{
+    background-color: #f2f2f2;
+    color: #e68a00;
 }
+
+.operator-clicked, .operator-pressed{
+    animation: click;
+    animation-duration: 200ms;
+}
+
 .num-input {
     color: white;
     display: flex;
@@ -76,20 +80,21 @@ body{
     justify-content: center;
     text-align: center;
     background-color: #333333;
-    vertical-align: middle;
+    font-size: var(--calculator-button-fontsize);
+    user-select: none;
 }
 .num-input:hover{
-    animation: fade-num;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
+    background-color: #666666;
 }
-.num-input-pressed{
-    animation: fade-num;
-    animation-duration: 300ms;
+
+.num-input-clicked, .num-input-pressed{
+    animation: click;
+    animation-duration: 200ms;
 }
-@keyframes fade-num{
-    100%{
-        background-color: #666666;
+
+@keyframes click{
+    50%{
+        transform: scale(.9);
     }
 }
 [data-function="clear"]{
@@ -150,8 +155,9 @@ body{
     grid-area: equals;
 }
 [data-function="disp"]{
-    max-width: 400px;
-    max-height: 142px;
+    max-width: var(--calculator-width);
+    margin-bottom: 8px;
+    max-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -161,4 +167,6 @@ body{
     font-size: 48px;
     border-radius: 5px;
 }
+
+
 
