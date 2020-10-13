@@ -26,6 +26,7 @@ body{
     grid-gap: 1px;
     box-shadow: 0 0px 10px 0 #555555;
     cursor: pointer;
+    user-select: none;
 }
 .special-function {
     display: flex;
