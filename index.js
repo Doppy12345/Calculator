@@ -3,9 +3,6 @@ let display = document.querySelector('div[data-function=disp]');
 // Global variable for the list of all the operation button elemnts on the calculator
 const operationButtons = Array.from(document.querySelectorAll('.operator'))
 
-// Biggest and smallest displayable number for the calculator without exceeding the maximum number of digits before using scientific notation
-const biggestDisplayableNum = 999999999
-const smallestDisplayableNum = 0.0000001
 
 // The currently saved terms that will be used in an operation along with the operation function
 let storedValues = {firstNum: undefined, secondNum: undefined, operation: null}
@@ -47,10 +44,10 @@ const clear = () => {
 // Takes in a number and formats it so that it fits properly in the calculator's display
 const formatNumber = num => {
     console.log(num)
-    if(num != 0 && (Math.abs(num) < smallestDisplayableNum || Math.abs(num)  > biggestDisplayableNum)){
+    if( (num / 10000000) > 1 || (num * 10000) < 1 ){
         num = num.toExponential(2)
     } else if(num.toString().length > 9){
-         num = num.toFixed(8)
+         num = num.toPrecision(8)
     }
     return num
 }
