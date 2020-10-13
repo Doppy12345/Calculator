@@ -13,25 +13,25 @@ let storedValues = {firstNum: undefined, secondNum: undefined, operation: null}
 let canOverwriteDisp = true
 
 
-//Basic arithmetic functions
+// Basic arithmetic functions
 const divide = (num1, num2 = num1) => num2 ? num1 / num2 : 'Error'
 const multiply = (num1, num2 = num1) => num1 * num2
 const subtract = (num1, num2= num1) => num1 - num2
 const add = (num1, num2 = num1) => num1 + num2
 
-//implements the +/- calculator button functionality
+// implements the +/- calculator button functionality
 const negate = () => {
     display.textContent *= -1 
     canOverwriteDisp = false
 }
 
-//implements the % calculator button functionality
+// implements the % calculator button functionality
 const toPercent = () => {
     display.textContent  = formatNumber(parseFloat(display.textContent) / 100)
     canOverwriteDisp = false
 }
 
-//implements the AC calculator button functionality
+// implements the AC calculator button functionality
 const clear = () => {
     if(canOverwriteDisp){
         storedValues.firstNum = undefined
@@ -44,7 +44,7 @@ const clear = () => {
     }
     canOverwriteDisp = true
 }
-//Takes in a number and formats it so that it fits properly in the calculator's display
+// Takes in a number and formats it so that it fits properly in the calculator's display
 const formatNumber = num => {
     console.log(num)
     if(num != 0 && (Math.abs(num) < smallestDisplayableNum || Math.abs(num)  > biggestDisplayableNum)){
@@ -82,7 +82,7 @@ const populate = (input) =>  {
     if(display.textContent === '0'){
         canOverwriteDisp = true
     }
-    //Checks  if the decimal point is the first value and updates the display to reflect that
+    // Checks  if the decimal point is the first value and updates the display to reflect that
     if(input == '.' && canOverwriteDisp){
         display.textContent = '0.'
         canOverwriteDisp = false
@@ -113,7 +113,7 @@ function setUpCalculator(){
         // The pressed key is stored as the input
         const input = document.querySelector(`[data-key="${e.key}"]`)
         
-        //  If the input is a num-input key populate the corresponding number into the display
+        // If the input is a num-input key populate the corresponding number into the display
         if(input.className == 'num-input'){
         input.classList.add('num-input-pressed')
         populate(input.textContent)
@@ -229,7 +229,7 @@ function setUpCalculator(){
             toPercent()
         })
     
-    // adds an on click event listener to all the operation buttons on the calculator similar to their corresponding  keypress event listener functionality
+    // Adds an on click event listener to all the operation buttons on the calculator similar to their corresponding  keypress event listener functionality
     operationButtons.forEach(button => {
         switch(button.getAttribute('data-function')){
             case 'multiply':
